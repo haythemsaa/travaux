@@ -31,3 +31,64 @@ tmp/
 
 # Config (if contains sensitive data)
 # src/Config/config.php
+
+# Docker
+docker-compose.override.yml
+
+# Database backups
+*.sql.gz
+*.sql.bak
+database_backup/
+
+# Node modules (if using any JS build tools)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Build files
+dist/
+build/
+
+# Tests
+coverage/
+.phpunit.result.cache
+tests/_output/
+
+# Mobile (React Native)
+mobile/node_modules/
+mobile/.expo/
+mobile/dist/
+mobile/npm-debug.*
+mobile/*.jks
+mobile/*.p8
+mobile/*.p12
+mobile/*.key
+mobile/*.mobileprovision
+mobile/*.orig.*
+mobile/web-build/
+mobile/.env.local
+
+# iOS
+mobile/ios/Pods/
+mobile/ios/build/
+mobile/ios/*.xcworkspace
+mobile/ios/*.xcuserstate
+
+# Android
+mobile/android/build/
+mobile/android/.gradle/
+mobile/android/local.properties
+mobile/android/*.apk
+mobile/android/*.aab
+mobile/android/app/build/
+
+# Secrets and credentials
+*.pem
+*.key
+*.crt
+credentials.json
+firebase-key.json
+
+# Temporary files
+*.tmp
+temp/

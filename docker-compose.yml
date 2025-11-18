@@ -1,0 +1,93 @@
+version: '3.8'
+
+services:
+  # MySQL Database
+  db:
+    image: mysql:8.0
+    container_name: travaux_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-root_password}
+      MYSQL_DATABASE: ${DB_NAME:-travaux_pro}
+      MYSQL_USER: ${DB_USER:-travaux_user}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-travaux_password}
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./database:/docker-entrypoint-initdb.d
+    ports:
+      - "3306:3306"
+    networks:
+      - travaux_network
+
+  # PHP Apache Application
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: travaux_web
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./:/var/www/html
+      - ./uploads:/var/www/html/uploads
+      - ./storage:/var/www/html/storage
+    environment:
+      DB_HOST: db
+      DB_NAME: ${DB_NAME:-travaux_pro}
+      DB_USER: ${DB_USER:-travaux_user}
+      DB_PASSWORD: ${DB_PASSWORD:-travaux_password}
+      JWT_SECRET: ${JWT_SECRET:-your_jwt_secret_key_here}
+      STRIPE_SECRET_KEY: ${STRIPE_SECRET_KEY}
+      STRIPE_PUBLISHABLE_KEY: ${STRIPE_PUBLISHABLE_KEY}
+      FIREBASE_SERVER_KEY: ${FIREBASE_SERVER_KEY}
+      APP_ENV: ${APP_ENV:-production}
+      APP_DEBUG: ${APP_DEBUG:-false}
+    depends_on:
+      - db
+    networks:
+      - travaux_network
+
+  # PHPMyAdmin (Optional - for development)
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: travaux_phpmyadmin
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_USER: ${DB_USER:-travaux_user}
+      PMA_PASSWORD: ${DB_PASSWORD:-travaux_password}
+    depends_on:
+      - db
+    networks:
+      - travaux_network
+    profiles:
+      - dev
+
+  # Redis (Optional - for caching and sessions)
+  redis:
+    image: redis:7-alpine
+    container_name: travaux_redis
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - travaux_network
+    profiles:
+      - production
+
+volumes:
+  db_data:
+    driver: local
+  redis_data:
+    driver: local
+
+networks:
+  travaux_network:
+    driver: bridge
