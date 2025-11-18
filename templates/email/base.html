@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{subject}}</title>
+    <style>
+        /* Reset */
+        body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+        table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+        img { -ms-interpolation-mode: bicubic; border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
+
+        /* General */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #374151;
+            background-color: #f3f4f6;
+        }
+
+        /* Container */
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+        }
+
+        /* Header */
+        .email-header {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .email-header h1 {
+            margin: 0;
+            color: #ffffff;
+            font-size: 32px;
+            font-weight: bold;
+            letter-spacing: -0.5px;
+        }
+
+        .email-header p {
+            margin: 10px 0 0;
+            color: #e0e7ff;
+            font-size: 14px;
+        }
+
+        /* Content */
+        .email-content {
+            padding: 40px 30px;
+        }
+
+        .email-content h2 {
+            margin: 0 0 20px;
+            color: #111827;
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .email-content p {
+            margin: 0 0 15px;
+            color: #374151;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* Button */
+        .email-button {
+            display: inline-block;
+            padding: 14px 32px;
+            margin: 20px 0;
+            background-color: #3b82f6;
+            color: #ffffff !important;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .email-button:hover {
+            background-color: #2563eb;
+        }
+
+        /* Info Box */
+        .info-box {
+            background-color: #eff6ff;
+            border-left: 4px solid #3b82f6;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .info-box p {
+            margin: 0;
+            color: #1e40af;
+            font-size: 14px;
+        }
+
+        /* Success Box */
+        .success-box {
+            background-color: #f0fdf4;
+            border-left: 4px solid #10b981;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .success-box p {
+            margin: 0;
+            color: #065f46;
+            font-size: 14px;
+        }
+
+        /* Warning Box */
+        .warning-box {
+            background-color: #fffbeb;
+            border-left: 4px solid #f59e0b;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .warning-box p {
+            margin: 0;
+            color: #92400e;
+            font-size: 14px;
+        }
+
+        /* Table */
+        .email-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .email-table th,
+        .email-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .email-table th {
+            background-color: #f9fafb;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        /* Footer */
+        .email-footer {
+            padding: 30px 20px;
+            text-align: center;
+            background-color: #f9fafb;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .email-footer p {
+            margin: 5px 0;
+            font-size: 13px;
+            color: #6b7280;
+        }
+
+        .email-footer a {
+            color: #3b82f6;
+            text-decoration: none;
+        }
+
+        .social-links {
+            margin: 20px 0;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin: 0 8px;
+            color: #6b7280;
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media only screen and (max-width: 600px) {
+            .email-container {
+                width: 100% !important;
+            }
+
+            .email-header,
+            .email-content,
+            .email-footer {
+                padding: 20px !important;
+            }
+
+            .email-header h1 {
+                font-size: 24px !important;
+            }
+
+            .email-content h2 {
+                font-size: 20px !important;
+            }
+
+            .email-button {
+                display: block !important;
+                width: 100% !important;
+                text-align: center !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+        <tr>
+            <td align="center" style="padding: 20px 0;">
+                <table class="email-container" role="presentation" cellspacing="0" cellpadding="0" border="0">
+
+                    <!-- Header -->
+                    <tr>
+                        <td class="email-header">
+                            <h1>Travaux Pro</h1>
+                            <p>Votre plateforme de mise en relation</p>
+                        </td>
+                    </tr>
+
+                    <!-- Content -->
+                    <tr>
+                        <td class="email-content">
+                            {{content}}
+                        </td>
+                    </tr>
+
+                    <!-- Footer -->
+                    <tr>
+                        <td class="email-footer">
+                            <div class="social-links">
+                                <a href="https://facebook.com/travauxpro">Facebook</a>
+                                <a href="https://twitter.com/travauxpro">Twitter</a>
+                                <a href="https://linkedin.com/company/travauxpro">LinkedIn</a>
+                                <a href="https://instagram.com/travauxpro">Instagram</a>
+                            </div>
+                            <p>&copy; {{year}} Travaux Pro. Tous droits réservés.</p>
+                            <p>
+                                <a href="https://travauxpro.com/unsubscribe?email={{user_email}}">Se désabonner</a> |
+                                <a href="https://travauxpro.com/privacy">Confidentialité</a> |
+                                <a href="https://travauxpro.com/contact">Contact</a>
+                            </p>
+                            <p style="margin-top: 15px; font-size: 12px;">
+                                123 Rue Example, 75001 Paris, France<br>
+                                <a href="mailto:contact@travauxpro.com">contact@travauxpro.com</a>
+                            </p>
+                        </td>
+                    </tr>
+
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

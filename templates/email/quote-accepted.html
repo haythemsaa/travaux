@@ -1,0 +1,31 @@
+<h2>✅ Votre devis a été accepté !</h2>
+
+<p>Bonjour {{artisan_name}},</p>
+
+<p>Félicitations ! Votre devis pour le projet "<strong>{{project_title}}</strong>" a été accepté par le client.</p>
+
+<div class="success-box">
+    <p><strong>Client:</strong> {{client_name}}<br>
+    <strong>Montant:</strong> {{amount}} {{currency}}<br>
+    <strong>Date de début:</strong> {{start_date}}</p>
+</div>
+
+<p><strong>Prochaines étapes:</strong></p>
+<ul>
+    <li>Contactez le client pour finaliser les détails</li>
+    <li>Planifiez le début des travaux</li>
+    <li>Préparez les matériaux nécessaires</li>
+</ul>
+
+<p style="text-align: center;">
+    <a href="{{project_url}}" class="email-button">Voir le projet</a>
+</p>
+
+<p>Coordonnées du client:<br>
+📞 {{client_phone}}<br>
+📧 {{client_email}}</p>
+
+<p>Bonne chance avec ce projet !</p>
+
+<p>Cordialement,<br>
+L'équipe Travaux Pro</p>

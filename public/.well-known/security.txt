@@ -1,0 +1,56 @@
+Contact: mailto:security@travauxpro.com
+Expires: 2025-12-31T23:59:59.000Z
+Preferred-Languages: fr, en
+Canonical: https://travauxpro.com/.well-known/security.txt
+
+# Security Policy
+
+## Scope
+This security policy applies to all Travaux Pro services, including:
+- Web application (https://travauxpro.com)
+- Mobile applications (iOS and Android)
+- API endpoints (https://travauxpro.com/api)
+
+## Reporting Security Issues
+If you discover a security vulnerability, please report it to us at:
+- Email: security@travauxpro.com
+- PGP Key: https://travauxpro.com/.well-known/pgp-key.txt (optional)
+
+Please include:
+- Description of the vulnerability
+- Steps to reproduce
+- Potential impact
+- Any proof of concept code
+
+## Response Timeline
+- Initial response: Within 24 hours
+- Status update: Within 72 hours
+- Fix deployment: Severity dependent
+  - Critical: Within 24-48 hours
+  - High: Within 1 week
+  - Medium: Within 2 weeks
+  - Low: Within 1 month
+
+## Responsible Disclosure
+We request that you:
+- Give us reasonable time to fix the issue before public disclosure
+- Do not exploit the vulnerability beyond proof of concept
+- Do not access, modify, or delete user data
+- Do not perform DoS/DDoS attacks
+
+## Bug Bounty
+We currently do not offer a bug bounty program, but we greatly appreciate
+security researchers who report vulnerabilities responsibly.
+
+## Out of Scope
+- Social engineering attacks
+- Physical attacks
+- DoS/DDoS attacks
+- Spam or phishing attacks
+- Issues in third-party services
+- Issues requiring unlikely user interaction
+
+## Acknowledgments
+We thank security researchers who have helped improve Travaux Pro security.
+
+Thank you for helping keep Travaux Pro secure!
