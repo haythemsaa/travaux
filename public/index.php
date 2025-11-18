@@ -46,6 +46,8 @@ use App\Controllers\MessageController;
 use App\Controllers\ReviewController;
 use App\Controllers\NotificationController;
 use App\Controllers\SearchController;
+use App\Controllers\AnalyticsController;
+use App\Controllers\QuoteComparisonController;
 use App\Middleware\AuthMiddleware;
 use App\Middleware\GuestMiddleware;
 
@@ -107,6 +109,17 @@ $router->get('/notifications/unread-count', [NotificationController::class, 'get
 $router->get('/search/artisans', [SearchController::class, 'artisans']);
 $router->get('/artisan/{id}/profile', [SearchController::class, 'artisanProfile']);
 $router->post('/favorites/toggle/{id}', [SearchController::class, 'toggleFavorite'], [AuthMiddleware::class]);
+
+// Analytics routes (auth required)
+$router->get('/analytics/dashboard', [AnalyticsController::class, 'dashboard'], [AuthMiddleware::class]);
+$router->get('/analytics/market-prices', [AnalyticsController::class, 'marketPrices']);
+$router->get('/analytics/compare-project/{id}', [AnalyticsController::class, 'compareProject'], [AuthMiddleware::class]);
+
+// Quote comparison routes (auth required)
+$router->get('/quotes/compare/{id}', [QuoteComparisonController::class, 'compare'], [AuthMiddleware::class]);
+$router->get('/quotes/export-pdf/{id}', [QuoteComparisonController::class, 'exportPDF'], [AuthMiddleware::class]);
+$router->get('/quotes/pdf/{id}', [QuoteComparisonController::class, 'exportQuotePDF'], [AuthMiddleware::class]);
+$router->get('/quotes/recommendations/{id}', [QuoteComparisonController::class, 'smartRecommendations'], [AuthMiddleware::class]);
 
 // Dispatch
 $router->dispatch();
