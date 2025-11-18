@@ -1,0 +1,33 @@
+# PHP
+vendor/
+composer.lock
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+
+# Uploads
+public/uploads/*
+!public/uploads/.gitkeep
+
+# Logs
+*.log
+logs/
+
+# Cache
+cache/
+tmp/
+
+# Config (if contains sensitive data)
+# src/Config/config.php
