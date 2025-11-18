@@ -42,6 +42,10 @@ use App\Controllers\HomeController;
 use App\Controllers\AuthController;
 use App\Controllers\ClientController;
 use App\Controllers\ArtisanController;
+use App\Controllers\MessageController;
+use App\Controllers\ReviewController;
+use App\Controllers\NotificationController;
+use App\Controllers\SearchController;
 use App\Middleware\AuthMiddleware;
 use App\Middleware\GuestMiddleware;
 
@@ -80,6 +84,29 @@ $router->get('/artisan/projects/{id}/quote', [ArtisanController::class, 'submitQ
 $router->post('/artisan/quotes/submit', [ArtisanController::class, 'submitQuote'], [AuthMiddleware::class]);
 $router->get('/artisan/profile', [ArtisanController::class, 'profile'], [AuthMiddleware::class]);
 $router->post('/artisan/profile', [ArtisanController::class, 'updateProfile'], [AuthMiddleware::class]);
+
+// Message routes (auth required)
+$router->get('/messages', [MessageController::class, 'index'], [AuthMiddleware::class]);
+$router->get('/messages/conversation/{id}/{id2}', [MessageController::class, 'conversation'], [AuthMiddleware::class]);
+$router->post('/messages/send', [MessageController::class, 'send'], [AuthMiddleware::class]);
+
+// Review routes
+$router->get('/reviews/create/{id}', [ReviewController::class, 'createForm'], [AuthMiddleware::class]);
+$router->post('/reviews/create', [ReviewController::class, 'create'], [AuthMiddleware::class]);
+$router->get('/reviews/artisan/{id}', [ReviewController::class, 'artisanReviews']);
+$router->post('/reviews/{id}/respond', [ReviewController::class, 'respond'], [AuthMiddleware::class]);
+
+// Notification routes (auth required)
+$router->get('/notifications', [NotificationController::class, 'index'], [AuthMiddleware::class]);
+$router->post('/notifications/mark-read/{id}', [NotificationController::class, 'markAsRead'], [AuthMiddleware::class]);
+$router->post('/notifications/mark-all-read', [NotificationController::class, 'markAllAsRead'], [AuthMiddleware::class]);
+$router->post('/notifications/delete/{id}', [NotificationController::class, 'delete'], [AuthMiddleware::class]);
+$router->get('/notifications/unread-count', [NotificationController::class, 'getUnreadCount'], [AuthMiddleware::class]);
+
+// Search routes
+$router->get('/search/artisans', [SearchController::class, 'artisans']);
+$router->get('/artisan/{id}/profile', [SearchController::class, 'artisanProfile']);
+$router->post('/favorites/toggle/{id}', [SearchController::class, 'toggleFavorite'], [AuthMiddleware::class]);
 
 // Dispatch
 $router->dispatch();

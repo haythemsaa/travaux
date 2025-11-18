@@ -5,6 +5,9 @@ namespace App\Controllers;
 use App\Models\Project;
 use App\Models\Category;
 use App\Models\Quote;
+use App\Models\Notification;
+use App\Models\ArtisanProfile;
+use App\Models\User;
 
 class ClientController extends Controller {
 
@@ -162,6 +165,13 @@ class ClientController extends Controller {
 
         // Update project status
         $projectModel->update($quote['project_id'], ['status' => 'in_progress']);
+
+        // Get artisan user_id and send notification
+        $artisanModel = new ArtisanProfile();
+        $artisan = $artisanModel->findById($quote['artisan_id']);
+        if ($artisan) {
+            Notification::notifyQuoteAccepted($artisan['user_id'], $project['title']);
+        }
 
         $this->flash('success', 'Devis accepté avec succès!');
         $this->redirect('/client/projects/' . $quote['project_id']);

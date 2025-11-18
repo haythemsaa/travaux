@@ -16,9 +16,17 @@
                 </a>
                 <ul class="nav-menu">
                     <li><a href="/projects" class="nav-link">Projets</a></li>
+                    <li><a href="/search/artisans" class="nav-link">Artisans</a></li>
                     <li><a href="/how-it-works" class="nav-link">Comment ça marche</a></li>
 
                     <?php if (isset($_SESSION['user'])): ?>
+                        <li><a href="/messages" class="nav-link">
+                            <i class="fas fa-envelope"></i> Messages
+                        </a></li>
+                        <li><a href="/notifications" class="nav-link">
+                            <i class="fas fa-bell"></i> Notifications
+                        </a></li>
+
                         <?php if ($_SESSION['user']['user_type'] === 'client'): ?>
                             <li><a href="/client/dashboard" class="nav-link">Tableau de bord</a></li>
                             <li><a href="/client/projects/create" class="btn btn-primary btn-sm">Publier un projet</a></li>

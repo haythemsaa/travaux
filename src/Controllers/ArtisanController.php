@@ -6,6 +6,7 @@ use App\Models\Project;
 use App\Models\Quote;
 use App\Models\ArtisanProfile;
 use App\Models\Category;
+use App\Models\Notification;
 
 class ArtisanController extends Controller {
 
@@ -181,6 +182,16 @@ class ArtisanController extends Controller {
             'payment_terms' => $_POST['payment_terms'] ?? null,
             'valid_until' => $_POST['valid_until'] ?? null
         ]);
+
+        // Send notification to client
+        $projectModel = new Project();
+        $project = $projectModel->findById($projectId);
+        if ($project) {
+            $artisanModel = new ArtisanProfile();
+            $artisan = $artisanModel->findById($artisanId);
+            $artisanName = $artisan['company_name'] ?? 'Un artisan';
+            Notification::notifyNewQuote($project['client_id'], $projectId, $artisanName);
+        }
 
         $this->flash('success', 'Votre devis a été envoyé avec succès!');
         $this->redirect('/artisan/dashboard');
