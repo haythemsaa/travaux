@@ -48,6 +48,7 @@ use App\Controllers\NotificationController;
 use App\Controllers\SearchController;
 use App\Controllers\AnalyticsController;
 use App\Controllers\QuoteComparisonController;
+use App\Controllers\TradesController;
 use App\Middleware\AuthMiddleware;
 use App\Middleware\GuestMiddleware;
 
@@ -109,6 +110,11 @@ $router->get('/notifications/unread-count', [NotificationController::class, 'get
 $router->get('/search/artisans', [SearchController::class, 'artisans']);
 $router->get('/artisan/{id}/profile', [SearchController::class, 'artisanProfile']);
 $router->post('/favorites/toggle/{id}', [SearchController::class, 'toggleFavorite'], [AuthMiddleware::class]);
+
+// Trades routes
+$router->get('/trades', [TradesController::class, 'index']);
+$router->get('/trades/{id}', [TradesController::class, 'show']);
+$router->get('/api/trades/{id}/fields', [TradesController::class, 'getFields']);
 
 // Analytics routes (auth required)
 $router->get('/analytics/dashboard', [AnalyticsController::class, 'dashboard'], [AuthMiddleware::class]);
