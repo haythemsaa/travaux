@@ -23,7 +23,12 @@ import ProfileScreen from './src/screens/profile/ProfileScreen';
 import ArtisansScreen from './src/screens/artisans/ArtisansScreen';
 import ArtisanDetailScreen from './src/screens/artisans/ArtisanDetailScreen';
 import NotificationsScreen from './src/screens/notifications/NotificationsScreen';
-import SettingsScreen from './src/screens/settings/SettingsScreen';
+import SettingsScreen from './src/screens/profile/SettingsScreen';
+import TradesScreen from './src/screens/trades/TradesScreen';
+import TradeDetailScreen from './src/screens/trades/TradeDetailScreen';
+import FavoritesScreen from './src/screens/favorites/FavoritesScreen';
+import MarketPricesScreen from './src/screens/analytics/MarketPricesScreen';
+import HelpScreen from './src/screens/help/HelpScreen';
 
 // Context
 import {AuthProvider, useAuth} from './src/context/AuthContext';
@@ -159,6 +164,31 @@ function AppStack() {
         name="Settings"
         component={SettingsScreen}
         options={{title: 'Paramètres'}}
+      />
+      <Stack.Screen
+        name="Trades"
+        component={TradesScreen}
+        options={{title: 'Métiers & Services'}}
+      />
+      <Stack.Screen
+        name="TradeDetail"
+        component={TradeDetailScreen}
+        options={{title: 'Détails du métier'}}
+      />
+      <Stack.Screen
+        name="Favorites"
+        component={FavoritesScreen}
+        options={{title: 'Mes Favoris'}}
+      />
+      <Stack.Screen
+        name="MarketPrices"
+        component={MarketPricesScreen}
+        options={{title: 'Prix du marché'}}
+      />
+      <Stack.Screen
+        name="Help"
+        component={HelpScreen}
+        options={{title: 'Aide & FAQ'}}
       />
     </Stack.Navigator>
   );

@@ -2,6 +2,12 @@
 
 Application mobile **iOS & Android** pour la plateforme Travaux Pro, construite avec **React Native**.
 
+## ✨ Nouveautés v1.1.0
+
+- **Catalogue des Métiers** 🔧 - Parcourir les 60+ métiers disponibles avec leurs formulaires personnalisés
+- **Favoris** ⭐ - Sauvegarder vos artisans préférés pour y accéder rapidement
+- **Prix du Marché** 📊 - Consulter les prix moyens par catégorie et région
+
 ## 🚀 Fonctionnalités
 
 ### ✅ Authentification

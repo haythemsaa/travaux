@@ -237,6 +237,37 @@ class ApiService {
   getCategoryFields(categoryId) {
     return this.get(`/categories/${categoryId}/fields`);
   }
+
+  // Trades
+  getTrades(params = {}) {
+    return this.get('/trades', params);
+  }
+
+  getTrade(id) {
+    return this.get(`/trades/${id}`);
+  }
+
+  getTradeFields(tradeId) {
+    return this.get(`/api/trades/${tradeId}/fields`);
+  }
+
+  // Favorites
+  getFavorites() {
+    return this.get('/favorites');
+  }
+
+  toggleFavorite(artisanId) {
+    return this.post(`/favorites/toggle/${artisanId}`);
+  }
+
+  // Analytics
+  getMarketPrices(params = {}) {
+    return this.get('/analytics/market-prices', params);
+  }
+
+  getProjectComparison(projectId) {
+    return this.get(`/analytics/compare-project/${projectId}`);
+  }
 }
 
 export const apiService = new ApiService();
